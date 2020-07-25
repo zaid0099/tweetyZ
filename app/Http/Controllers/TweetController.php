@@ -6,16 +6,26 @@ use App\Tweet;
 use Illuminate\Http\Request;
 
 class TweetController extends Controller
-{
+{   
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
-     * Display a listing of the resource.
+     * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
+    
     public function index()
     {
-        //
+        return view('home', [
+            'tweets' => auth()->user()->timeline()
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
