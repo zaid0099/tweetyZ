@@ -1,6 +1,4 @@
-<x-master>
-
-
+<x-app>
     <header class="relative">
         <div>
             <img src="{{asset('images/default-profile-banner.jpg')}}" alt="" class="mb-6">
@@ -12,9 +10,15 @@
                 <p class="text-sm">Joined {{ $user->created_at->diffForHumans() }}</p>
             </div>
 
-            <div>
+            <div class="flex">
                 <a href="" class="rounded-full border border-gray-300 py-2 px-2 text-black text-xs mr-2">Edit Profile</a>
-                <a href="" class="bg-blue-500 rounded-lg shadow py-2 px-4 text-white text-xs">Follow Me!</a>
+
+                <form method="POST" action="/profiles/{{ $user->name }}/follow">
+                    @csrf
+                    <button type="submit" href="" class="bg-blue-500 rounded-lg shadow py-2 px-4 text-white text-xs">
+                        {{ auth()->user()->following($user) ? 'Unfollow Me' : 'Follow Me' }}
+                    </button>
+                </form>
             </div>
         </div>
 
@@ -25,7 +29,7 @@
         </div>
 
         <div>
-            <img src="{{ $user->avatar}}" alt="" class="rounded-full mr-2 absolute" style="width: 150px; left: calc(50% - 75px); top:16rem">
+            <img src="{{ $user->avatar}}" alt="" class="rounded-full mr-2 absolute" style="width: 150px; left: calc(50% - 75px); top:58%">
         </div>
 
 
@@ -34,3 +38,4 @@
 
     @include('_timeline',[
     'tweets' => $user->tweets])
+</x-app>

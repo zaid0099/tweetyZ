@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Followable;
 
     /**
      * The attributes that are mass assignable.
@@ -38,7 +38,8 @@ class User extends Authenticatable
     ];
 
     public function timeline()
-    {   // ----1---- just Current User
+    {
+        // ----1---- just Current User
         // return Tweet::where('user_id', $this->id)->latest()->get();
 
         // ----2---- Curnnet user and Following.
@@ -74,8 +75,13 @@ class User extends Authenticatable
         return $this->follows()->save($user);
     }
 
-    public function getRouteKeyName()
+    public function following()
     {
-        return 'name';
+        //
     }
+
+    // public function getRouteKeyName()
+    // {
+    //     return 'name';
+    // }
 }
