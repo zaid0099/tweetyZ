@@ -29,6 +29,7 @@
             </header>
         </section>
 
+        {{ $slot }}
 
     </div>
 </body>
