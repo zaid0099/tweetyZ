@@ -2,30 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Tweet;
+use App\User;
 use Illuminate\Http\Request;
 
-class TweetController extends Controller
+class ProfilesController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
-        return view('tweets.index', [
-            'tweets' => auth()->user()->timeline()
-        ]);
+        //
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -45,13 +35,7 @@ class TweetController extends Controller
      */
     public function store(Request $request)
     {
-        $attributes =  $request->validate(['body' => 'required|max:255']);
-        Tweet::create([
-            'user_id' => auth()->id(),
-            'body' => $attributes['body']
-        ]);
-
-        return redirect('/tweets');
+        //
     }
 
     /**
@@ -60,9 +44,9 @@ class TweetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('profiles.show', compact('user'));
     }
 
     /**
