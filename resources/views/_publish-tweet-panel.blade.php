@@ -5,8 +5,8 @@
         <hr class="my-4">
         <footer class="flex justify-between">
             <div class="flex items-center text-sm">
-                <img src="{{ auth()->user()->avatar }}" alt="" class="rounded-full mr-2" width="50" height="50">
-                {{auth()->user()->name}}
+                <img src="{{ current_user()->avatar }}" alt="" class="rounded-full mr-2" width="50" height="50">
+                {{current_user()->name}}
             </div>
             <button type="submit" class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white">Tweet-a-Root!</button>
         </footer>

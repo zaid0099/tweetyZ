@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ProfilesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -55,9 +60,13 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        // abort_if($user->isNot(current_user()), 404);
+
+        $this->authorize('edit', $user);
+
+        return view('profiles.edit', compact('user'));
     }
 
     /**

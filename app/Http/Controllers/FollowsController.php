@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class FollowsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +29,7 @@ class FollowsController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -35,8 +40,7 @@ class FollowsController extends Controller
      */
     public function store(User $user)
     {
-        auth()->user()->follow($user);
-
+        current_user()->toggleFollow($user);
         return back();
     }
 

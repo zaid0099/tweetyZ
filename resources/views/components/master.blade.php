@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/customStyle.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -30,6 +31,8 @@
         </section>
 
         {{ $slot }}
+
+
 
     </div>
 </body>

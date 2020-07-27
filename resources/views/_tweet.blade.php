@@ -1,19 +1,18 @@
-<div class="flex p-4 border-b border-b-gray-400">
+<div class="flex p-4 {{ $loop->last ? '' : 'border-b border-b-gray-400' }}">
 
     <div class="mr-2 flex-shrink-0 ">
         <div class="flex items-center text-sm">
-            <a href="{{ route('profile', $tweet->user) }}">
+            <a href="{{ $tweet->user->path() }}">
                 <img src="{{$tweet->user->avatar}}" alt="" class="rounded-full mr-2" width="50" height="50">
             </a>
         </div>
     </div>
 
     <div>
-        <a href="{{ route('profile', $tweet->user) }}">
+        <a href="{{ $tweet->user->path() }}">
             <h5 class="font-bold mb-4">{{ $tweet->user->name }}</h5>
         </a>
         <p class="text-sm">{{ $tweet->body }}</p>
         <h6 class="font-bold text-sm text-gray-500 mt-2">Id: {{$tweet->id}}</h6>
     </div>
-
 </div>
