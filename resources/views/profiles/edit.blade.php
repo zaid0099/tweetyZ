@@ -26,7 +26,7 @@
             <label for="avatar" class="black mb-2 uppercase font-bold text-xs text-gray-700">avatar</label>
 
             <div class="flex">
-                <input type="file" class="border border-gray-400 p-2 w-full" name="avatar" id="avatar" required value="{{ $user->avatar }}">
+                <input type="file" class="border border-gray-400 p-2 w-full" name="avatar" id="avatar" value="{{ $user->avatar }}">
 
                 <img src="{{ $user->avatar }}" alt="Your Avatar" width="40">
 

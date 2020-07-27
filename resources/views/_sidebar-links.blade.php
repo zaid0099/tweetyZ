@@ -3,10 +3,7 @@
         <a href="{{ route('home') }}" class="font-bold text-lg mb-5 black">Home</a>
     </li>
     <li class="mb-4">
-        <a href="#" class="font-bold text-lg mb-5 black">Explore</a>
-    </li>
-    <li class="mb-4">
-        <a href="#" class="font-bold text-lg mb-5 black">Explore</a>
+        <a href="{{ route('explore') }}" class="font-bold text-lg mb-5 black">Explore</a>
     </li>
     <li class="mb-4">
         <a href="#" class="font-bold text-lg mb-5 black">Notifications</a>

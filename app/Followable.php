@@ -28,11 +28,13 @@ trait Followable
 
     public function toggleFollow(User $user)
     {
-        // current_user()->follow($user);
-        if (current_user()->following($user)) {
-            return current_user()->unFollow($user);
-        }
+        // // current_user()->follow($user);
+        // if (current_user()->following($user)) {
+        //     return current_user()->unFollow($user);
+        // }
 
-        return current_user()->follow($user);
+        // return current_user()->follow($user);
+
+        $this->follows()->toggle($user);
     }
 }

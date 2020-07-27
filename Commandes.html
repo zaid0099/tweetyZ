@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <ul>
+            <ol>
+                <li>$users = App\User::all()</li>
+                <li>$users = $users->skip(1);</li>
+                <li>
+                    $users->each(function ($user) {factory('App\Tweet',
+                    10)->create(['user_id' => $user->id]); })
+                </li>
+                <p>For Create Tweet For Every User</p>
+            </ol>
+            <ol>
+                <li>hi</li>
+            </ol>
+        </ul>
+    </body>
+</html>

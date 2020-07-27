@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
-class ProfilesController extends Controller
+class ExploreController extends Controller
 {
 
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +20,9 @@ class ProfilesController extends Controller
      */
     public function index()
     {
-        //
+        return view('explore', [
+            'users' => User::paginate(50),
+        ]);
     }
 
     /**
@@ -50,9 +52,9 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return view('profiles.show', compact('user'));
+        //
     }
 
     /**
@@ -61,13 +63,9 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        // abort_if($user->isNot(current_user()), 404);
-
-        $this->authorize('edit', $user);
-
-        return view('profiles.edit', compact('user'));
+        //
     }
 
     /**
@@ -77,23 +75,9 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        // dd(request('avatar'));
-        $attributes =  $request->validate([
-            'userName' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('users')->ignore($user)],
-            'name' => ['required', 'string', 'max:255'],
-            'avatar' => ['file'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user)],
-            'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
-        ]);
-
-        if (request('avatar')) {
-            $attributes['avatar'] = request('avatar')->store('avatars');
-        }
-
-        $user->update($attributes);
-        return redirect($user->path());
+        //
     }
 
     /**
