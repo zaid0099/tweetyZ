@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProfilesController extends Controller
 {
@@ -76,9 +77,21 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        // dd(request('avatar'));
+        $attributes =  $request->validate([
+            'userName' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('users')->ignore($user)],
+            'name' => ['required', 'string', 'max:255'],
+            'avatar' => ['required', 'file'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user)],
+            'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
+        ]);
+
+        $attributes['avatar'] = request('avatar')->store('avatars');
+
+        $user->update($attributes);
+        return redirect($user->path());
     }
 
     /**

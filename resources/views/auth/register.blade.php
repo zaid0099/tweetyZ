@@ -12,6 +12,20 @@
                             @csrf
 
                             <div class="form-group row">
+                                <label for="userName" class="col-md-4 col-form-label text-md-right">User Name</label>
+
+                                <div class="col-md-6">
+                                    <input id="userName" type="text" class="form-control @error('userName') is-invalid @enderror" name="userName" value="{{ old('userName') }}" required autocomplete="userName" autofocus>
+
+                                    @error('userName')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
