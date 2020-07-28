@@ -18,15 +18,21 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/customStyle.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/customStyle.css') }}" rel="stylesheet"> -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+
+
 </head>
 
 <body>
     <div id="app">
         <section class="px-8 py-4 mb-4">
             <header class="container mx-auto">
-                <img src="{{asset('images/logo.svg')}}" alt="">
+                <a href="/"><img src="{{asset('images/logo.svg')}}" alt="">
+                </a>
             </header>
         </section>
 

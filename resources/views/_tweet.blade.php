@@ -12,7 +12,23 @@
         <a href="{{ $tweet->user->path() }}">
             <h5 class="font-bold mb-4">{{ $tweet->user->name }}</h5>
         </a>
-        <p class="text-sm">{{ $tweet->body }}</p>
-        <h6 class="font-bold text-sm text-gray-500 mt-2">Id: {{$tweet->id}}</h6>
+        <p class="text-sm mb-3">{{ $tweet->body }}</p>
+
+        <div class="flex">
+            <div class="flex items-center mr-4 {{ $tweet->isDisLikedBy(current_user()) ? 'text-blue-500' : 'text-gray-500' }}">
+                <span class="text-xs">
+                    {{ $tweet->likes ? : 0}}
+                </span>
+                <i class="fa fa-thumbs-up ml-2 " aria-hidden="true"></i>
+            </div>
+
+            <div class="flex items-center mr-4 {{ $tweet->isDisLikedBy(current_user()) ? 'text-blue-500' : 'text-gray-500' }}">
+                <span class="text-xs">
+                    {{ $tweet->disLikes ? : 0 }}
+                </span>
+                <i class="fa fa-thumbs-down ml-2 " aria-hidden="true"></i>
+            </div>
+        </div>
     </div>
+
 </div>
