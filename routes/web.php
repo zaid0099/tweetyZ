@@ -43,3 +43,13 @@ Route::get('/profiles/{user:userName}/edit', 'ProfilesController@edit');
 Route::post('/profiles/{user:userName}/follow', 'FollowsController@store')->name("follow");
 
 Route::get('/explore', 'ExploreController@index')->name('explore');
+
+Route::post('/explore', 'ExploreController@store')->name('explore');
+
+
+Route::post('/tweets/{tweet}/like', 'TweetLikesController@store');
+Route::delete('/tweets/{tweet}/like', 'TweetLikesController@destroy');
+
+
+// Route::post('/tweets/{tweet}like', 'TweetLikesController@store');
+// Route::delete('/tweets/{tweet}like', 'TweetLikesController@destroy');

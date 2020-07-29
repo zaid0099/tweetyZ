@@ -5,37 +5,17 @@ namespace App\Http\Controllers;
 use App\Tweet;
 use Illuminate\Http\Request;
 
-class TweetController extends Controller
+class TweetLikesController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
-
-        // ========--------========
-        //For Test Likes and DisLikes.
-        // return auth()->user()->timeLine();
-        // $likeds =  auth()->user()->timeLine();
-        // foreach ($likeds as $liked) {
-        //     return $liked->likes;
-        // }
-        // ========--------========
-
-        return view('tweets.index', [
-            'tweets' => current_user()->timeline()
-        ]);
+        //
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -53,15 +33,11 @@ class TweetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Tweet $tweet)
     {
-        $attributes =  $request->validate(['body' => 'required|max:255']);
-        Tweet::create([
-            'user_id' => auth()->id(),
-            'body' => $attributes['body']
-        ]);
+        $tweet->like(current_user());
 
-        return redirect()->route('home');
+        return back();
     }
 
     /**
@@ -104,8 +80,10 @@ class TweetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tweet $tweet)
     {
-        //
+        $tweet->disLike(current_user());
+
+        return back();
     }
 }

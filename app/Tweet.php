@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tweet extends Model
 {
     use likable;
+
     protected $guarded = [];
 
     public function user()
